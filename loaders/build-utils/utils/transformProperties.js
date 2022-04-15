@@ -71,6 +71,7 @@ export const transformProperties = ({ source, index }) => {
 
   return {
     properties: propertiesStringArr.join(''),
-    parsedIndex: index
+    parsedIndex: index,
+    propsVarName
   }
 };

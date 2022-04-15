@@ -1,6 +1,7 @@
 // Utils
 import { transformMetaImports } from '../utils/transformMetaImports';
 import { transformProperties } from '../utils/transformProperties';
+import { getMergingMetadataCode } from '../utils/getMergingMetadataCode';
 
 /**
  * 
@@ -13,7 +14,7 @@ export const metaLoader = (source, map, meta) => {
   let index = 0;
   let transformedSourceStringArr = [];
 
-  const { metaImports, parsedIndex: metaImportsIndex, vars } = transformMetaImports({
+  const { metaImports, parsedIndex: metaImportsIndex, varNames } = transformMetaImports({
     source,
     index,
     resourcePath: this.resourcePath,
@@ -22,14 +23,26 @@ export const metaLoader = (source, map, meta) => {
   transformedSourceStringArr.push(metaImports);
   index = metaImportsIndex;
 
-  const { properties, parsedIndex: propertiesIndex } = transformProperties({
+  const { properties, parsedIndex: propertiesIndex, propsVarName } = transformProperties({
     source,
     index
   })
   transformedSourceStringArr.push(properties);
   index = propertiesIndex;
+  
+  const { code, mergedMetadataVarName } = getMergingMetadataCode([
+    ...varNames,
+    propsVarName
+  ]);
+  transformedSourceStringArr.push(code);
 
-  // this.callback(null, source, map, meta);
+  transformedSourceStringArr.push(
+    `export default ${mergedMetadataVarName}`
+  );
+
+  const transformedSource = transformedSourceStringArr.join('');
+
+  this.callback(null, transformedSource, map, meta);
 
   return;
 };

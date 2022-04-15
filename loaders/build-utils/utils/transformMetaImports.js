@@ -7,7 +7,7 @@ import { getRelativePath } from './getRelativePath';
 
 export const transformMetaImports = ({ source, index, resourcePath, rootDir }) => {
   const metaImportsStringArr = [];
-  const vars = [];
+  const varNames = [];
 
   while(index < source.length) {
     if(source[index] === ' ') {
@@ -38,8 +38,8 @@ export const transformMetaImports = ({ source, index, resourcePath, rootDir }) =
       const metaResourcePath = getMetaResourcePath({ filename, rootDir });
       const relativePath = getRelativePath({ fromPath: resourcePath, toPath: metaResourcePath });
 
-      const varName = `meta${vars.length}`;
-      vars.push(varName);
+      const varName = `meta${varNames.length}`;
+      varNames.push(varName);
 
       const importString = `import ${varName} from ${relativePath}\n`;
       metaImportsStringArr.push(importString);
@@ -50,7 +50,7 @@ export const transformMetaImports = ({ source, index, resourcePath, rootDir }) =
   return { 
     metaImports: metaImportsStringArr.join(''),
     parsedIndex: index,
-    vars
+    varNames
   };
 };
 
