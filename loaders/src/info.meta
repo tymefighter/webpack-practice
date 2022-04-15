@@ -1,0 +1,2 @@
+fields: username,health,attack,speed
+desc: Username of user,max health of user,attack value,speed value
