@@ -1,0 +1,14 @@
+{
+  "name": "webpack-loaders-practice",
+  "version": "0.0.0",
+  "description": "Practicing using webpack loaders",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Ahmed Zaheer Dadarkar",
+  "license": "ISC",
+  "devDependencies": {
+    "webpack": "^5.72.0"
+  }
+}
