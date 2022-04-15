@@ -1,10 +1,10 @@
 // Utils
-import { parseWord } from './parseWord';
-import { parseLine } from './parseLine';
-import { parseWhitespace } from './parseWhitespace';
-import { transformComment } from './transformComment';
+const parseWord = require('./parseWord');
+const parseLine = require('./parseLine');
+const parseWhitespace = require('./parseWhitespace');
+const transformComment = require('./transformComment');
 
-export const transformProperties = ({ source, index }) => {
+const transformProperties = ({ source, index }) => {
   const propertiesStringArr = [];
   const propertyNameVsValueMap = {};
   const propsVarName = 'props';
@@ -36,7 +36,7 @@ export const transformProperties = ({ source, index }) => {
       const { line, parsedIndex: lineParsedIndex } = parseLine({ source, index: wordParsedIndex });
 
       const propertyValues = line
-        .trip()
+        .trim()
         .split(',');
 
       propertyNameVsValueMap[propertyName] = propertyValues;
@@ -53,19 +53,15 @@ export const transformProperties = ({ source, index }) => {
   fields.map((fieldName, index) => fieldNameVsIndexMap[fieldName] = index);
 
   const propertyNames = Object.keys(propertyNameVsValueMap);
-  const properties = 
-  ```
+  const properties = `
     const ${propsVarName} = {
-      ${fields.map(fieldName => {
-        return 
-        ```
-          ${fieldName}: {
-            ${propertyNames.map(propertyName => `${propertyName}: ${propertyNameVsValueMap[propertyName][fieldNameVsIndexMap[fieldName]]}`)}
-          }
-        ```
-      })}
+      ${fields.map(fieldName => `
+        ${fieldName}: {
+          ${propertyNames.map(propertyName => `${propertyName}: '${propertyNameVsValueMap[propertyName][fieldNameVsIndexMap[fieldName]]}'`)}
+        }
+      `)}
     }
-  ```;
+  `;
 
   propertiesStringArr.push(properties);
 
@@ -75,3 +71,5 @@ export const transformProperties = ({ source, index }) => {
     propsVarName
   }
 };
+
+module.exports = transformProperties;

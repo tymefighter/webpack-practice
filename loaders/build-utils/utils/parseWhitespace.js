@@ -1,4 +1,4 @@
-export const parseWhitespace = ({ source, index }) => {
+const parseWhitespace = ({ source, index }) => {
   if(index === source.length || source[index] !== ' ') {
     return {
       whitespace: '',
@@ -16,3 +16,5 @@ export const parseWhitespace = ({ source, index }) => {
     parsedIndex
   };
 };
+
+module.exports = parseWhitespace;

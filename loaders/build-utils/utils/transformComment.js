@@ -1,4 +1,4 @@
-export const transformComment = ({ source, index }) => {
+const transformComment = ({ source, index }) => {
   if(index === source.length || source[index] !== '#') {
     return {
       comment: '',
@@ -20,3 +20,5 @@ export const transformComment = ({ source, index }) => {
     parsedIndex
   };
 }
+
+module.exports = transformComment;

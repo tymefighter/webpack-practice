@@ -1,1 +1,3 @@
-export { metaLoader as default } from './metaLoader';
+const metaLoader = require('./metaLoader');
+
+module.exports = metaLoader;

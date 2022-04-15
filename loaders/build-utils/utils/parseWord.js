@@ -1,5 +1,5 @@
-export const parseWord = ({ source, index }) => {
-  if(index === source.length || source[index] === ' ') {
+const parseWord = ({ source, index }) => {
+  if(index === source.length || source[index] === ' ' || source[index] === '\n') {
     return {
       word: '',
       parsedIndex: index
@@ -7,7 +7,7 @@ export const parseWord = ({ source, index }) => {
   }
 
   let parsedIndex = index;
-  while(parsedIndex < source.length && source[parsedIndex] !== ' ') {
+  while(parsedIndex < source.length && source[parsedIndex] !== ' ' && source[parsedIndex] !== '\n') {
     parsedIndex ++;
   }
 
@@ -16,3 +16,5 @@ export const parseWord = ({ source, index }) => {
     parsedIndex
   };
 };
+
+module.exports = parseWord;

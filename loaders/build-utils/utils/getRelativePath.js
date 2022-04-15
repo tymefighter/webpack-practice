@@ -1,4 +1,4 @@
-export const getRelativePath = ({ fromPath, toPath }) => {
+const getRelativePath = ({ fromPath, toPath }) => {
   const fromPathArr = fromPath.split('/');
   const toPathArr = toPath.split('/');
 
@@ -23,3 +23,5 @@ export const getRelativePath = ({ fromPath, toPath }) => {
 
   return relativePath;
 }
+
+module.exports = getRelativePath;

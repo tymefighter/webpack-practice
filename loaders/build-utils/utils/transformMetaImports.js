@@ -1,11 +1,11 @@
 // Utils
-import { parseWord } from './parseWord';
-import { parseWhitespace } from './parseWhitespace';
-import { transformComment } from './transformComment';
-import { getMetaResourcePath } from './getMetaResourcePath';
-import { getRelativePath } from './getRelativePath';
+const parseWord = require('./parseWord')
+const parseWhitespace = require('./parseWhitespace');
+const transformComment = require('./transformComment');
+const getMetaResourcePath = require('./getMetaResourcePath');
+const getRelativePath = require('./getRelativePath');
 
-export const transformMetaImports = ({ source, index, resourcePath, rootDir }) => {
+const transformMetaImports = ({ source, index, resourcePath, rootDir }) => {
   const metaImportsStringArr = [];
   const varNames = [];
 
@@ -41,7 +41,7 @@ export const transformMetaImports = ({ source, index, resourcePath, rootDir }) =
       const varName = `meta${varNames.length}`;
       varNames.push(varName);
 
-      const importString = `import ${varName} from ${relativePath}\n`;
+      const importString = `import ${varName} from '${relativePath}'\n`;
       metaImportsStringArr.push(importString);
       index = filenameParsedIndex;
     }
@@ -54,3 +54,4 @@ export const transformMetaImports = ({ source, index, resourcePath, rootDir }) =
   };
 };
 
+module.exports = transformMetaImports;

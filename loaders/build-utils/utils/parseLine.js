@@ -1,4 +1,4 @@
-export const parseLine = ({ source, index }) => {
+const parseLine = ({ source, index }) => {
   if(index === source.length || source[index] === '\n') {
     return {
       line: '',
@@ -20,3 +20,5 @@ export const parseLine = ({ source, index }) => {
     parsedIndex
   };
 };
+
+module.exports = parseLine

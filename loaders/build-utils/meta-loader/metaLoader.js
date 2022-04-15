@@ -1,7 +1,7 @@
 // Utils
-import { transformMetaImports } from '../utils/transformMetaImports';
-import { transformProperties } from '../utils/transformProperties';
-import { getMergingMetadataCode } from '../utils/getMergingMetadataCode';
+const transformMetaImports = require('../utils/transformMetaImports');
+const transformProperties = require('../utils/transformProperties');
+const getMergingMetadataCode = require('../utils/getMergingMetadataCode');
 
 /**
  * 
@@ -9,7 +9,7 @@ import { getMergingMetadataCode } from '../utils/getMergingMetadataCode';
  * @param {object} [map] SourceMap data consumable by https://github.com/mozilla/source-map
  * @param {any} [meta] Meta data, could be anything
  */
-export const metaLoader = (source, map, meta) => {
+function metaLoader (source, map, meta) {
 
   let index = 0;
   let transformedSourceStringArr = [];
@@ -46,3 +46,5 @@ export const metaLoader = (source, map, meta) => {
 
   return;
 };
+
+module.exports = metaLoader;

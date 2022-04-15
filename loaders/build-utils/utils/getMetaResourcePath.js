@@ -1,4 +1,4 @@
-import * as fs from 'fs';
+const fs = require('fs');
 
 const searchDir = ({ dir, searchFilename }) => {
   for(const filename of fs.readdirSync(dir)) {
@@ -23,7 +23,9 @@ const searchDir = ({ dir, searchFilename }) => {
   return undefined;
 }
 
-export const getMetaResourcePath = ({ rootDir, filename }) => searchDir({
+const getMetaResourcePath = ({ rootDir, filename }) => searchDir({
   dir: rootDir,
   searchFilename: filename
 })
+
+module.exports = getMetaResourcePath;
