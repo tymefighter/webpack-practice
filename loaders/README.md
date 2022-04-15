@@ -72,8 +72,8 @@ const { data, meta } = users;
 const fields = Object.keys(meta)
 
 fields.forEach(field => {
-    paddedPrint(meta.title?.[field] ?? field)
-  })
+  paddedPrint(meta[field].title ?? field)
+})
 
 data.forEach(user => {
   fields.forEach(field => {
