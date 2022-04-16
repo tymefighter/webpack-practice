@@ -1,2 +1,2 @@
-fields: username,health,attack,speed
+field: username,health,attack,speed
 title: Username,Health,Attack,Speed

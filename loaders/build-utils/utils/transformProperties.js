@@ -44,11 +44,11 @@ const transformProperties = ({ source, index }) => {
     }
   }
 
-  if(!propertyNameVsValueMap.fields) {
-    throw new Error('fields not defined in meta file');
+  if(!propertyNameVsValueMap.field) {
+    throw new Error('field property not defined in meta file');
   }
 
-  const { fields } = propertyNameVsValueMap
+  const { field: fields } = propertyNameVsValueMap
   const fieldNameVsIndexMap = {};
   fields.map((fieldName, index) => fieldNameVsIndexMap[fieldName] = index);
 

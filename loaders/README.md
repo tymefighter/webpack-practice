@@ -17,8 +17,8 @@ An example file content is as follows, `users.data`:
 meta types.meta
 meta all-info.meta
 
-# Fields declaration follows
-fields: username,health,damage,speed
+# Field declaration follows
+field: username,health,damage,speed
 
 # Data follows
 
@@ -33,18 +33,18 @@ The `.meta` file stores metadata about a `.data` file. A `.meta` file
 can store any property information about the data. Metadata files can also
 import other metadata files, and they also can have single line comments which
 begin with `#`. If a meta file defines even a single property, then it must
-declare the fields property as well.
+declare the field property as well.
 
-The `fields` and `type` metadata properties are special properties used to
+The `field` and `type` metadata properties are special properties used to
 reference columns in the data and to assign data types to columns respectively.
 
 Example metadata files follow, `types.meta` and `all-info.meta` respectively:
 
 ```
-# Fields Metadata - special required property
-fields: username,health,damage,speed
-# Types metadata - special property
-types: String,Int,Int,Int
+# Field Metadata - special required property
+field: username,health,damage,speed
+# Type metadata - special property
+type: String,Int,Int,Int
 ```
 
 ```
@@ -53,8 +53,8 @@ meta names.meta
 meta desc.meta
 ```
 Note: metadata files need not have to define their own metadata, they can possibly 
-just import other meta files and still be valid. Such metadata files need not declare
-their own fields property.
+just import other meta files and still be valid. Such metadata files still have to
+declare their own `field` property.
 
 **Important**: An important thing to know is that `meta` file imports are directory
 structure agnostic. Only the name of the file matters, not where it is present in the

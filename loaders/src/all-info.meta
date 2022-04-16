@@ -1,4 +1,4 @@
 meta info.meta
 meta title.meta
 
-fields: username,health,attack,speed
+field: username,health,attack,speed
