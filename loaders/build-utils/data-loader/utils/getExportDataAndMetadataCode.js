@@ -6,3 +6,5 @@ const getExportDataAndMetadataCode = ({ metaVarName, dataVarName }) => `
 
   export default dataAndMetadata;
 `;
+
+module.exports = getExportDataAndMetadataCode;

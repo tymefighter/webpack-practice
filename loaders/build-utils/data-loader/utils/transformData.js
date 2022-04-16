@@ -26,7 +26,7 @@ const transformFieldProperty = ({ source, index }) => {
       index ++;
     }
     else {
-      const { line, parsedIndex } = parseLine({ source, index: wordParsedIndex });
+      const { line, parsedIndex } = parseLine({ source, index });
 
       dataRow = line
         .trim()

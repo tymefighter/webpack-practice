@@ -21,7 +21,7 @@ function dataLoader (source, map, meta) {
     source,
     index,
     resourcePath: this.resourcePath,
-    rootDir: this.context
+    rootDir: process.cwd() + '/src'
   });
   transformedSourceStringArr.push(metaImports);
   index = metaImportsIndex;
