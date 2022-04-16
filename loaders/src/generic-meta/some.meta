@@ -1,0 +1,4 @@
+some: mock,value,some,meta
+another: mock,generic,value,data
+field: id,name,username,password
+type: String,String,String,String

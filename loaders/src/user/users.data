@@ -1,0 +1,8 @@
+# Meta imports
+meta title.meta
+meta some.meta
+
+field: id,name,username,password
+
+7127b37a,Mock Name,the_mock_user,Mock&User&Password
+a8asdf8,The Name,user_user,UserUser
